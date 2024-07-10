@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "startTime": "00:00",
+      "endTime": "08:00",
+      "place": "Maldives",
+      "description": "Save the turtles",
+      "image": "maldives"
+    },
+    {
+      "startTime": "08:00",
+      "endTime": "16:00",
+      "place": "Golden beach",
+      "description": "Surfing on the sea",
+      "image": "goldenBeach"
+    },
+    {
+      "startTime": "16:00",
+      "endTime": "23:59",
+      "place": "Coconut grove",
+      "description": "BBQ party by the sea",
+      "image": "coconutGroove"
+    },
+    {
+      "startTime": "23:59",
+      "place": "Maldives Islands",
+      "description": "Sea blowing",
+      "image": "maldiveIslands"
+    }
+  ]
+}
