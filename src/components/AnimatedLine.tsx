@@ -36,7 +36,10 @@ const AnimatedLine = (props: Props) => {
     </>
   );
 };
-export default AnimatedLine;
+export default React.memo(
+  AnimatedLine,
+  (prevProp, nextProp) => prevProp.animatedValue === nextProp.animatedValue,
+);
 const styles = StyleSheet.create({
   container: {},
   animatedLineContainer: {

@@ -31,7 +31,10 @@ const AnimatedCircle = (props: Props) => {
     </View>
   );
 };
-export default AnimatedCircle;
+export default React.memo(
+  AnimatedCircle,
+  (prevProp, nextProp) => prevProp.animatedValue === nextProp.animatedValue,
+);
 const styles = StyleSheet.create({
   container: {},
   circle: {
