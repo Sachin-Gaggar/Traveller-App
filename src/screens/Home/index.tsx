@@ -1,14 +1,37 @@
 import React from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Button} from 'react-native';
 import {colors} from '../../util/Constants';
 import {Strings} from '../../util/String';
+import HeaderComponent from '../../components/HeaderComponent';
+import LocalNotiee from '../../util/LocalNotiee';
 
 type Props = {};
 const Home = (props: Props) => {
+  const localNotification = (tabName: string) => {
+    const title = 'Local Push Notification';
+    const body = `guide:${tabName}`;
+    const data = {notification: {title, body}};
+    LocalNotiee.onDisplayNotification(data);
+  };
   return (
-    <View style={styles.container}>
-      <Text style={styles.headingTxt}>{Strings.homePage}</Text>
-    </View>
+    <>
+      <HeaderComponent title={Strings.homePage} />
+      <View style={styles.container}>
+        <Text>{Strings.notificationMsg}</Text>
+        <Button
+          title={Strings.gotoYesterDayTab}
+          onPress={() => localNotification(Strings.yesterday)}
+        />
+        <Button
+          title={Strings.gotoTodayDayTab}
+          onPress={() => localNotification(Strings.today)}
+        />
+        <Button
+          title={Strings.gotoTomorrowTab}
+          onPress={() => localNotification(Strings.tomorrow)}
+        />
+      </View>
+    </>
   );
 };
 export default Home;
@@ -17,6 +40,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.whiteSmoke,
     flex: 1,
     justifyContent: 'center',
+    padding: 16,
+    gap: 8,
   },
   headingTxt: {
     color: colors.silver,

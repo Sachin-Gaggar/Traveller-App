@@ -7,9 +7,20 @@ import {getDateInNumFormat, getFormatedDate} from '../../util/date';
 import TravelScreen from './TravelScreen';
 import {Days, Routes} from '../../types/itenaryForm';
 
-const ItenaryForm = () => {
+const ItenaryForm = (props: {intialTabName?: string}) => {
   const layout = useWindowDimensions();
-  const [index, setIndex] = React.useState(0);
+  const [index, setIndex] = React.useState(() => {
+    switch (props.intialTabName) {
+      case Strings.today:
+        return 1;
+      case Strings.yesterday:
+        return 0;
+      case Strings.tomorrow:
+        return 2;
+      default:
+        return 1;
+    }
+  });
   const [routes] = React.useState<Routes[]>([
     {
       key: Days.yesterday,

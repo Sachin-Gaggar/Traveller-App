@@ -16,5 +16,7 @@ export const screenNames = {
   wallet: 'wallet',
   guide: 'guide',
 };
-
+export const asyncStorageKeys = {
+  firebaseDeviceToken: '@firebaseToken',
+};
 export const IS_IOS = Platform.OS === 'ios';

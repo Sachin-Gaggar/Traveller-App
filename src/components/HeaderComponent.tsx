@@ -10,6 +10,7 @@ import {
 import {colors} from '../util/Constants';
 import BackButton from '../assets/svgs/backArrow.svg';
 import {useNavigation} from '@react-navigation/native';
+import Logger from '../util/Logger';
 
 type Props = {
   title: string;
@@ -18,19 +19,21 @@ type Props = {
 const HeaderComponent = (props: Props) => {
   const {title} = props;
   const navigation = useNavigation();
+  const canGoBack = Boolean(navigation.canGoBack());
   return (
     <>
       <SafeAreaView style={{backgroundColor: colors.white}} />
       <View style={styles.container}>
-        <TouchableOpacity
-          onPress={() => {
-            console.log('back pressed');
-            navigation.goBack();
-          }}
-          style={{zIndex: 10}}>
-          <BackButton />
-        </TouchableOpacity>
-        <View style={styles.titleView}>
+        {canGoBack && (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}
+            style={{zIndex: 10}}>
+            <BackButton />
+          </TouchableOpacity>
+        )}
+        <View style={[styles.titleView, !canGoBack && {left: 28}]}>
           <Text style={styles.title}>{title}</Text>
         </View>
       </View>

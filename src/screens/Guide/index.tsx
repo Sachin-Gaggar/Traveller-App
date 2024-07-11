@@ -6,14 +6,12 @@ import HeaderComponent from '../../components/HeaderComponent';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import ItenaryForm from './ItenaryForm';
 
-type Props = {};
-
-const Guide = (props: Props) => {
+const Guide = props => {
   return (
     <>
       <HeaderComponent title={Strings.itenaryForm} />
       <View style={styles.container}>
-        <ItenaryForm />
+        <ItenaryForm intialTabName={props?.route?.params?.tabName} />
       </View>
     </>
   );

@@ -16,16 +16,22 @@ import Wallet from '../screens/Wallet';
 import Guide from '../screens/Guide';
 import Chart from '../screens/Chart';
 import CustomTabBar, {screenOptions} from './CustomTabBar';
+import NotificationUtil from '../util/NotificationUtil';
 const Tab = createBottomTabNavigator();
-const AppNavigator = () => {
+const AppNavigator = ({intialRoute, intialParams}) => {
   return (
-    <NavigationContainer>
+    <NavigationContainer linking={NotificationUtil.linking}>
       <Tab.Navigator
+        initialRouteName={intialRoute}
         screenOptions={{headerShown: false}}
         tabBar={props => <CustomTabBar {...props} />}>
         <Tab.Screen name={screenNames.home} component={Home} />
         <Tab.Screen name={screenNames.wallet} component={Wallet} />
-        <Tab.Screen name={screenNames.guide} component={Guide} />
+        <Tab.Screen
+          name={screenNames.guide}
+          component={Guide}
+          initialParams={{tabName: intialParams}}
+        />
         <Tab.Screen name={screenNames.chart} component={Chart} />
       </Tab.Navigator>
     </NavigationContainer>
