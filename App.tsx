@@ -12,7 +12,7 @@ function App(): React.JSX.Element {
   const [loading, setLoading] = useState(true);
   // const navigation = useNavigation();
   useEffect(() => {
-    const onNotificationRecieved = (route = screenNames.wallet) => {
+    const onNotificationRecieved = (route = screenNames.home) => {
       setLoading(true);
       setTimeout(() => {
         let routeName = route;
